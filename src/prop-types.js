@@ -58,7 +58,7 @@ export const isAllowedIfNone = (exclusivePropNames = [], defaultValidator) => {
             return new Error(`${propName} is expected to be undefined since one of ${exclusivePropNames} is already defined (in ${componentName}).`)
         }
 
-        if (isRequired && !isSpecified) {
+        if (isRequired && !isSpecified && !isOtherExclusivePropSpecified) {
             return requiredPropErr(propName, componentName)
         }
 

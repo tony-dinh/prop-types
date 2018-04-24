@@ -1,6 +1,6 @@
 {
   "name": "prop-type-conditionals",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React proptype utility library",
   "main": "dist/prop-types.js",
   "scripts": {
