@@ -114,7 +114,7 @@ export const isValidIf = (condition, defaultValidator) => {
 
         const isValid = condition(props, propName, componentName)
 
-        if (!isValid) {
+        if (!isValid && props.hasOwnProperty(propName)) {
             return invalidErr(propName, componentName)
         }
 
