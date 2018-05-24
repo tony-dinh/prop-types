@@ -106,16 +106,16 @@ export const isOneOfType = (allowedTypes = []) => {
  */
 export const isValidIf = (condition, defaultValidator) => {
     const validator = (isRequired, props, propName, componentName, ...rest) => {
+        const isValid = condition(props, propName, componentName)
+
+        if (!isValid) {
+            return invalidErr(propName, componentName)
+        }
+
         if (!props.hasOwnProperty(propName)) {
             return isRequired
                 ? requiredPropErr(propName, componentName)
                 : defaultValidator(props, propName, componentName, ...rest)
-        }
-
-        const isValid = condition(props, propName, componentName)
-
-        if (!isValid && props.hasOwnProperty(propName)) {
-            return invalidErr(propName, componentName)
         }
 
         return defaultValidator(props, propName, componentName, ...rest)
